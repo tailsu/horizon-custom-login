@@ -1,0 +1,24 @@
+{
+  "name": "horizon-custom-login",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@horizon/server": "^2.0.0",
+    "express": "^3.21.2",
+    "jsonwebtoken": "^7.1.9",
+    "level-userdb": "https://github.com/tailsu/level-userdb/archive/master.tar.gz",
+    "leveldown": "^1.5.0",
+    "levelup": "^1.3.3",
+    "lodash": "^4.17.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "toml": "^2.3.0"
+  }
+}

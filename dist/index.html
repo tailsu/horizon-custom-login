@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="/horizon/horizon.js"></script>
+    <script>
+      $(function() {
+        $('#login-form').submit(function(e) {
+          e.preventDefault();
+          $.ajax({
+            url: '/login',
+            type: 'POST',
+            dataType: "json",
+            data: $('#login-form').serialize(),
+            success: function(data) {
+              console.log('submitted');
+              var horizon = Horizon({
+                authType: {
+                  storeLocally: false,
+                  token: data.token,
+                }
+              });
+              horizon.status().subscribe(function(status) {
+                $('#status').text(status.type);
+              });
+              horizon.connect();
+            } 
+          })
+          return false;
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <p>Login with admin/admin</p>
+    <form id='login-form'>
+      <input type="text" name="username">
+      <input type="password" name="password">
+      <button type="submit">Login</Button>
+    </form>
+    <H1 >Horizon status: <span id="status"></span></H1>
+  </body>
+</html>
